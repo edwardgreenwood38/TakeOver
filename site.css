@@ -1,0 +1,23 @@
+/* CSS for the map */
+/* Define styles for territories */
+.territory {
+    /* Define styles for each territory */
+    /* You can use different colors, borders, etc. */
+    border: 1px solid #000;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 2px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#map {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
