@@ -12,3 +12,18 @@ territories.forEach(territory => {
 });
 
 
+// random placement of start point
+function playerStartPlacement() {
+    document.getElementById("start").style.display = "none";
+    let id = Math.floor(Math.random() * 16);
+
+    let name = 'territory' + id;
+    const territory = document.getElementById(name);
+    //territory.innerHTML = "Player 1";
+    territory.style.backgroundColor = "lightblue";
+    //console.log(territory);
+
+}
+
+
+
