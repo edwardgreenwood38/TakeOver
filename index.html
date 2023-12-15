@@ -11,32 +11,84 @@
     </div>
     <div id="map">
         <!-- Create territories -->
-        <div class="territory" id="territory1">Territory 1</div>
-        <div class="territory" id="territory2">Territory 2</div>
-        <div class="territory" id="territory3">Territory 3</div>
-        <div class="territory" id="territory4">Territory 4</div>
-        <div class="territory" id="territory5">Territory 5</div>
-        <div class="territory" id="territory6">Territory 6</div>
-        <div class="territory" id="territory7">Territory 7</div>
-        <div class="territory" id="territory8">Territory 8</div>
-        <div class="territory" id="territory9">Territory 9</div>
-        <div class="territory" id="territory10">Territory 10</div>
-        <div class="territory" id="territory11">Territory 11</div>
-        <div class="territory" id="territory12">Territory 12</div>
-        <div class="territory" id="territory13">Territory 13</div>
-        <div class="territory" id="territory14">Territory 14</div>
-        <div class="territory" id="territory15">Territory 15</div>
-        <div class="territory" id="territory16">Territory 16</div>
+        <div class="territory" id="territory1">
+            <h4 class="territoryTitle">Territory 1</h4>
+            <span id="troop1">1</span>
+        </div>
+        <div class="territory" id="territory2">
+            <h4 class="territoryTitle">Territory 2</h4>
+            <span id="troop2">1</span>
+        </div>
+        <div class="territory" id="territory3">
+            <h4 class="territoryTitle">Territory 3</h4>
+            <span id="troop3">1</span>
+        </div>
+        <div class="territory" id="territory4">
+            <h4 class="territoryTitle">Territory 4</h4>
+            <span id="troop4">1</span>
+        </div>
+        <div class="territory" id="territory5">
+            <h4 class="territoryTitle">Territory 5</h4>
+            <span id="troop5">1</span>
+        </div>
+        <div class="territory" id="territory6">
+            <h4 class="territoryTitle">Territory 6</h4>
+            <span id="troop6">1</span>
+        </div>
+        <div class="territory" id="territory7">
+            <h4 class="territoryTitle">Territory 7</h4>
+            <span id="troop7">1</span>
+        </div>
+        <div class="territory" id="territory8">
+            <h4 class="territoryTitle">Territory 8</h4>
+            <span id="troop8">1</span>
+        </div>
+        <div class="territory" id="territory9">
+            <h4 class="territoryTitle">Territory 9</h4>
+            <span id="troop9">1</span>
+        </div>
+        <div class="territory" id="territory10">
+            <h4 class="territoryTitle">Territory 10</h4>
+            <span id="troop10">1</span>
+        </div>
+        <div class="territory" id="territory11">
+            <h4 class="territoryTitle">Territory 11</h4>
+            <span id="troop11">1</span>
+        </div>
+        <div class="territory" id="territory12">
+            <h4 class="territoryTitle">Territory 12</h4>
+            <span id="troop12">1</span>
+        </div>
+        <div class="territory" id="territory13">
+            <h4 class="territoryTitle">Territory 13</h4>
+            <span id="troop13">1</span>
+        </div>
+        <div class="territory" id="territory14">
+            <h4 class="territoryTitle">Territory 14</h4>
+            <span id="troop14">1</span>
+        </div>
+        <div class="territory" id="territory15">
+            <h4 class="territoryTitle">Territory 15</h4>
+            <span id="troop15">1</span>
+        </div>
+        <div class="territory" id="territory16">
+            <h4 class="territoryTitle">Territory 16</h4>
+            <span id="troop16">1</span>
+        </div>
+        
+
         <!-- Add more territories... -->
     </div>
 
     <!--  menu  -->
     <div class="menu">
-        <button type="button" onclick="playerStartPlacement()" id="start">Start</button>
+        <button id="start" type="button" onclick="playerStartPlacement()">Start</button>
+        <p id="turn"></p>
     </div>
     
 
 
     <script src="./startup.js"></script>
+    <script src="./turns.js"></script>
 </body>
 </html>

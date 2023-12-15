@@ -1,14 +1,15 @@
 
 //  initial setup 
 const territories = document.querySelectorAll('.territory');
+let currentPlayer = 1;
+let winner = false;
+
 
 // Add a click event listener to territories
 territories.forEach(territory => {
-    territory.addEventListener('click', () => {
-        // Simulate claiming territory on click
-        territory.style.backgroundColor = 'blue';
-        // Add logic to claim territory and handle player turns
-    });
+    territory.addEventListener('click', function() {
+        territoryAction(this.id);
+    })
 });
 
 
@@ -34,3 +35,9 @@ function placement(num, playerColor) {
     territory.style.backgroundColor = playerColor;
 }
 
+
+//  turn loop
+while(winner) {
+    let turn = document.getElementById("turn");
+    turn.textContent = "Player 1";
+}
