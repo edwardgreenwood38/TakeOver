@@ -5,13 +5,30 @@ let currentPlayer = 1;
 let winner = false;
 document.getElementById("turn").style.display = "none";
 
+// map setup
+let mapTerritories = [];
+
+
 
 // Add a click event listener to territories
 territories.forEach(territory => {
     territory.addEventListener('click', function() {
         territoryAction(this.id);
-    })
+    });
 });
+
+for (let i = 1; i <= 16; i++) {
+    let mt = {
+        name: "Territory" + i,
+        owner: "Barbarian",
+        troops: 1,
+        homeBase: 0
+    }
+
+    //console.log(mt);
+    mapTerritories.push(mt);
+}
+//console.log(mapTerritories);
 
 
 // random placement of start point
