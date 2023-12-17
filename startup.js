@@ -5,6 +5,8 @@ let currentPlayer = 0;
 let winner = false;
 document.getElementById("turn").style.display = "none";
 let mapTerritories = [];
+let attackFrom = 0;
+let attackTo = 0;
 
 
 // map setup

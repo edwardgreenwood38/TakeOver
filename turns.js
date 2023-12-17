@@ -27,14 +27,27 @@ function territoryAction(element) {
     
     let terrNum = t1.id;
     //console.log(terrNum.substring(9));
-    let data = mapTerritories[terrNum.substring(9) -1];
+
+    // data is attack from
+    let data = mapTerritories[terrNum.substring(9) - 1];
     //console.log(data);
     if (data.owner === currentPlayer) {
         t1.style.border = "2px solid red";
+        attackFrom = terrNum.substring(9);
     }
     
+    //console.log(`From: ${attackFrom}.  To: ${attackTo}`)
+    if (attackFrom != 0 && data.owner !== currentPlayer) {
+        t1.style.border = "2px dashed red";
+        attackTo = terrNum.substring(9);
+    } 
     
-    
+    if (attackFrom != 0 && attackTo != 0) {
+        let ca = document.getElementById("currentAction");
+        ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
+
+        attackResults();
+    }
 
 }
 
@@ -121,4 +134,19 @@ function updateDisplay() {
         }
 
     }
+}
+
+
+function attackResults() {
+    let af = Math.floor(Math.random() * 10);
+    let at = Math.floor(Math.random() * 10);
+
+    if (af > at) {
+        //  subtract one from attackTo
+    }
+    else {
+        // substract one from attckFrom
+    }
+
+    return attackResults;
 }
