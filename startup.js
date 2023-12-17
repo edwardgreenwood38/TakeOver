@@ -7,16 +7,6 @@ document.getElementById("turn").style.display = "none";
 
 // map setup
 let mapTerritories = [];
-
-
-
-// Add a click event listener to territories
-territories.forEach(territory => {
-    territory.addEventListener('click', function() {
-        territoryAction(this.id);
-    });
-});
-
 for (let i = 1; i <= 16; i++) {
     let mt = {
         name: "Territory" + i,
@@ -31,29 +21,45 @@ for (let i = 1; i <= 16; i++) {
 //console.log(mapTerritories);
 
 
+
+// Add a click event listener to territories
+territories.forEach(territory => {
+    territory.addEventListener('click', function() {
+        territoryAction(this.id);
+    });
+});
+
+
+
+
+// player one
+let id = Math.floor(Math.random() * 16);
+//placement(id, 'lightblue');
+let mt = mapTerritories[id];
+mt.owner = "Player 1";
+mt.homeBase = 1;
+//console.log(mt)
+
+
+// player two
+id = Math.floor(Math.random() * 16);
+//placement(id, 'lightgreen');
+mt = mapTerritories[id];
+//console.log(mt);
+mt.owner = "Player 2";
+mt.homeBase = 1;
+
+
+
+updateDisplay();
+
+
 // random placement of start point
-function playerStartPlacement() {
+function startGame() {
     document.getElementById("start").style.display = "none";
     document.getElementById("turn").style.display = "block";
-    document.getElementById("playerTurn").textContent = "Player 1";
-    document.getElementById("playerTurn").style.backgroundColor = "lightblue";
     
-    // player one
-    let id = Math.floor(Math.random() * 16);
-    placement(id, 'lightblue');
-    let mt = mapTerritories[id];
-    mt.owner = "Player 1";
-    mt.homeBase = 1;
-    
-
-    // player two
-    id = Math.floor(Math.random() * 16);
-    placement(id, 'lightgreen');
-    mt = mapTerritories[id];
-    console.log(mt);
-    mt.owner = "Player 2";
-    mt.homeBase = 1;
-   
+    updateDisplay()
 }
 
 function placement(num, playerColor) {

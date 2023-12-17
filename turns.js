@@ -35,26 +35,13 @@ function territoryAction(element) {
 
 
 function endTurn() {
-    const checkTurn = document.getElementById("playerTurn").textContent;
-
-    if (checkTurn === "Player 1")
-    {
-        document.getElementById("playerTurn").textContent = "Player 2";
-        document.getElementById("playerTurn").style.backgroundColor = "lightgreen";
+    if (currentPlayer === 1) {
         currentPlayer = 2;
-
-        // get and place new troops
-
-    }
+    } 
     else {
-        // back to player 1
-        document.getElementById("playerTurn").textContent = "Player 1";
-        document.getElementById("playerTurn").style.backgroundColor = "lightblue";
         currentPlayer = 1;
-
-        // get and place new troops
-        placeTroops(currentPlayer);
     }
+    updateDisplay()
 }
 
 // get new troops and palce in home base
@@ -71,4 +58,53 @@ function placeTroops(cp) {
     }
 
 
+}
+
+
+
+// refresh screen to show updates
+function updateDisplay() {
+
+    for (let i = 1; i <= mapTerritories.length; i++) {
+        
+        // display player background
+        let t = "territory" + i;
+        let pt = document.getElementById(t);
+        //console.log(pt)
+        let mapOwner = mapTerritories[i-1];
+        //console.log(mapOwner)
+
+        if (mapOwner.owner === "Player 1") {
+            pt.style.backgroundColor = "lightblue";
+        }
+        if (mapOwner.owner === "Player 2") {
+            pt.style.backgroundColor = "lightgreen";
+        }
+        
+        // display territory title
+        let mt = "territoryTitle" + i;
+        let mapTitle = document.getElementById(mt);
+        mapTitle.textContent = "Territory " + i;
+
+        // dispaly nmber of troops
+        mt = "troop" + i;
+        //console.log(mt)
+        let mapTroop = document.getElementById(mt);
+        let tr = mapTerritories[i-1];
+        //console.log(tr)
+        mapTroop.textContent = tr.troops;
+
+
+        // display curernt player
+        let turn = document.getElementById("playerTurn");
+        if (currentPlayer === 1) {
+            turn.textContent = "Player 1";
+            turn.style.backgroundColor = "lightblue";
+        }
+        if (currentPlayer === 2) {
+            turn.textContent = "Player 2";
+            turn.style.backgroundColor = "lightgreen";
+        }
+
+    }
 }
