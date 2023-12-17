@@ -40,8 +40,3 @@ function placement(num, playerColor) {
 }
 
 
-// //  turn loop
-// while(winner) {
-//     let turn = document.getElementById("turn");
-//     turn.textContent = "Player 1";
-// }
