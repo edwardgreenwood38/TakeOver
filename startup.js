@@ -1,7 +1,7 @@
 
 //  initial setup 
 const territories = document.querySelectorAll('.territory');
-let currentPlayer = 1;
+let currentPlayer = 0;
 let winner = false;
 document.getElementById("turn").style.display = "none";
 let mapTerritories = [];
@@ -39,6 +39,7 @@ let id = Math.floor(Math.random() * 16);
 let mt = mapTerritories[id];
 mt.owner = 1;
 mt.homeBase = 1;
+mt.troops = 6;
 //console.log(mt)
 
 
@@ -49,6 +50,7 @@ mt = mapTerritories[id];
 //console.log(mt);
 mt.owner = 2;
 mt.homeBase = 1;
+mt.troops = 6;
 
 
 
@@ -59,7 +61,8 @@ updateDisplay();
 function startGame() {
     document.getElementById("start").style.display = "none";
     document.getElementById("turn").style.display = "block";
-    
+    currentPlayer = 1;
+
     updateDisplay()
 }
 

@@ -42,27 +42,36 @@ function territoryAction(element) {
 function endTurn() {
     if (currentPlayer === 1) {
         currentPlayer = 2;
+
+        // add new troops to home base
+        placeTroops(currentPlayer);
     } 
     else {
         currentPlayer = 1;
+        placeTroops(currentPlayer);
     }
+
+    // clear display
+    territories.forEach(t => {
+        t.style.border = "1px solid black";
+    })
+
     updateDisplay()
 }
 
 // get new troops and palce in home base
 function placeTroops(cp) {
     for (let i = 1; i <= mapTerritories.length; i++) {
-        let mt = mapTerritories[i];
+        let mt = mapTerritories[i-1];
         //console.log(mt);
-        if (mt.owner === "Player" + i && mt.homeBase === 1) {
-            mt.troops = mt.troop + 3;
+        if (mt.owner === cp && mt.homeBase === 1) {
+            //console.log(mt.troops);
+            let num = mt.troops + 3;
+            mt.troops = num;
+            //console.log(mt.troops);
         }
 
-        let troopId = "troop" + i;
-        document.getElementById(troopId).innerText = mt.troops;
     }
-
-
 }
 
 
