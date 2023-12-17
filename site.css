@@ -24,7 +24,7 @@
 
 .menu {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .menu button {
@@ -33,4 +33,13 @@
 
 .territoryTitle {
     margin: 1px auto;
+}
+
+.turn {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.turn p, .turn button {
+    font-size: 2em;
 }

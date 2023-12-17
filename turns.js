@@ -38,3 +38,19 @@ function territoryAction(element) {
     
 
 }
+
+
+function endTurn() {
+    const checkTurn = document.getElementById("playerTurn").textContent;
+
+    if (checkTurn === "Player 1")
+    {
+        document.getElementById("playerTurn").textContent = "Player 2";
+        document.getElementById("playerTurn").style.backgroundColor = "lightgreen";
+    }
+    else {
+        // back to player 1
+        document.getElementById("playerTurn").textContent = "Player 1";
+        document.getElementById("playerTurn").style.backgroundColor = "lightblue";
+    }
+}
