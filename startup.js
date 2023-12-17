@@ -4,9 +4,10 @@ const territories = document.querySelectorAll('.territory');
 let currentPlayer = 1;
 let winner = false;
 document.getElementById("turn").style.display = "none";
+let mapTerritories = [];
+
 
 // map setup
-let mapTerritories = [];
 for (let i = 1; i <= 16; i++) {
     let mt = {
         name: "Territory" + i,
@@ -36,7 +37,7 @@ territories.forEach(territory => {
 let id = Math.floor(Math.random() * 16);
 //placement(id, 'lightblue');
 let mt = mapTerritories[id];
-mt.owner = "Player 1";
+mt.owner = 1;
 mt.homeBase = 1;
 //console.log(mt)
 
@@ -46,7 +47,7 @@ id = Math.floor(Math.random() * 16);
 //placement(id, 'lightgreen');
 mt = mapTerritories[id];
 //console.log(mt);
-mt.owner = "Player 2";
+mt.owner = 2;
 mt.homeBase = 1;
 
 

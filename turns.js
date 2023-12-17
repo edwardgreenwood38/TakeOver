@@ -25,10 +25,15 @@
 function territoryAction(element) {
     const t1 = document.getElementById(element);
     
-    // player 1
-    if (t1.style.backgroundColor === "lightblue" && currentPlayer === 1) {
+    let terrNum = t1.id;
+    //console.log(terrNum.substring(9));
+    let data = mapTerritories[terrNum.substring(9) -1];
+    //console.log(data);
+    if (data.owner === currentPlayer) {
         t1.style.border = "2px solid red";
     }
+    
+    
     
 
 }
@@ -74,10 +79,10 @@ function updateDisplay() {
         let mapOwner = mapTerritories[i-1];
         //console.log(mapOwner)
 
-        if (mapOwner.owner === "Player 1") {
+        if (mapOwner.owner === 1) {
             pt.style.backgroundColor = "lightblue";
         }
-        if (mapOwner.owner === "Player 2") {
+        if (mapOwner.owner === 2) {
             pt.style.backgroundColor = "lightgreen";
         }
         
