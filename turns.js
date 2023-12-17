@@ -46,9 +46,13 @@ function territoryAction(element) {
         let ca = document.getElementById("currentAction");
         ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
 
-        attackResults();
+        ca.textContent += `\n\r${attackResults()}`;
+
+        attackFrom = 0;
+        attackTo = 0;
     }
 
+    updateDisplay();
 }
 
 
@@ -138,14 +142,19 @@ function updateDisplay() {
 
 
 function attackResults() {
+    let attackResults = "";
     let af = Math.floor(Math.random() * 10);
     let at = Math.floor(Math.random() * 10);
 
     if (af > at) {
         //  subtract one from attackTo
+        mapTerritories[attackTo - 1].troops -= 1;
+        attackResults = "You won this round.";
     }
     else {
         // substract one from attckFrom
+        mapTerritories[attackFrom - 1].troops -= 1;
+        attackResults = "You lost this round.";
     }
 
     return attackResults;
