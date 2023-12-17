@@ -41,11 +41,18 @@ function playerStartPlacement() {
     // player one
     let id = Math.floor(Math.random() * 16);
     placement(id, 'lightblue');
+    let mt = mapTerritories[id];
+    mt.owner = "Player 1";
+    mt.homeBase = 1;
     
 
     // player two
     id = Math.floor(Math.random() * 16);
     placement(id, 'lightgreen');
+    mt = mapTerritories[id];
+    console.log(mt);
+    mt.owner = "Player 2";
+    mt.homeBase = 1;
    
 }
 
