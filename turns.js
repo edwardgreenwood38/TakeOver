@@ -46,7 +46,7 @@ function territoryAction(element) {
         let ca = document.getElementById("currentAction");
         ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
 
-        ca.textContent += `\n\r${attackResults()}`;
+        ca.textContent += `${attackResults()}`;
 
         attackFrom = 0;
         attackTo = 0;
@@ -149,6 +149,15 @@ function attackResults() {
     if (af > at) {
         //  subtract one from attackTo
         mapTerritories[attackTo - 1].troops -= 1;
+
+        // check if take over territory
+        if (mapTerritories[attackTo - 1].troops <= 0) {
+            mapTerritories[attackTo - 1].owner = currentPlayer;
+
+            // move troops into new territory
+            mapTerritories[attackFrom - 1].troops -= 3;
+            mapTerritories[attackTo - 1].troops += 3;
+        }
         attackResults = "You won this round.";
     }
     else {
