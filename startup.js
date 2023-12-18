@@ -62,6 +62,8 @@ updateDisplay();
 // random placement of start point
 function startGame() {
     document.getElementById("start").style.display = "none";
+    document.getElementById("gameInfo").style.display = "none";
+    document.getElementById("map").style.display = "block";
     document.getElementById("turn").style.display = "block";
     currentPlayer = 1;
 

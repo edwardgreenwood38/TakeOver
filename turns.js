@@ -70,7 +70,7 @@ function endTurn() {
 
     // clear display
     territories.forEach(t => {
-        t.style.border = "1px solid black";
+        t.style.border = "2px solid black";
     })
 
     updateDisplay()

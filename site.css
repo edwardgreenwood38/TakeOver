@@ -3,7 +3,7 @@
 .territory {
     /* Define styles for each territory */
     /* You can use different colors, borders, etc. */
-    border: 1px solid #000;
+    border: 2px solid #000;
     width: 100px;
     height: 100px;
     display: inline-block;
@@ -16,10 +16,21 @@
 #map {
     width: 500px;
     margin: 0 auto;
+    display: none;
 }
 
 .title {
     text-align: center;
+    font-size: 1.5em;
+}
+
+#gameInfo {
+    text-align: center;
+    margin: 20px auto;
+    width: 60%;
+    font-size: 1.2em;
+    border: 2px solid black;
+    padding: 5px 20px 10px 20px;
 }
 
 .menu {
