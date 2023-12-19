@@ -63,14 +63,14 @@ function territoryAction(element) {
     
             ca.textContent += `${attackResults()}`; 
             
-    
-            attackFrom = 0;
-            attackTo = 0;
 
             // clear display
             territories.forEach(t => {
                 t.style.border = "2px solid black";
             });
+
+            attackFrom = 0;
+            attackTo = 0;
         }
     }
     
@@ -197,6 +197,10 @@ function attackResults() {
         if (mapTerritories[attackTo - 1].troops <= 0) {
             mapTerritories[attackTo - 1].owner = currentPlayer;
 
+            if (mapTerritories[attackTo - 1].homeBase === 1 && mapTerritories[attackTo - 1].troops === 0) {
+                winGame();
+            }
+
             // move troops into new territory
             mapTerritories[attackFrom - 1].troops -= 3;
             mapTerritories[attackTo - 1].troops += 3;
@@ -210,4 +214,20 @@ function attackResults() {
     }
 
     return attackResults;
+}
+
+
+function winGame() {
+    document.getElementById("turn").style.display = "none";
+
+    document.getElementById("winGame").style.display = "block";
+    if (currentPlayer === 1) {
+        document.getElementById("winGameText").style.backgroundColor = "lightblue";
+    } 
+    else {
+        document.getElementById("winGameText").style.backgroundColor = "lightgreen";
+    }
+
+    let win = document.getElementById("winGameText")
+    win.textContent = `Player ${currentPlayer} has won by taking the other player home base.`;
 }

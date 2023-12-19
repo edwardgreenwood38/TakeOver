@@ -1,3 +1,8 @@
+body {
+    background-color: #ddd;
+}
+
+
 /* CSS for the map */
 /* Define styles for territories */
 .territory {
@@ -29,7 +34,7 @@
     margin: 20px auto;
     width: 60%;
     font-size: 1.2em;
-    border: 2px solid black;
+    border: 4px double blue;
     padding: 5px 20px 10px 20px;
 }
 
@@ -40,6 +45,8 @@
 
 .menu button {
     font-size: 2em;
+    background-color:chartreuse;
+    border-radius: 15px;
 }
 
 .territoryTitle {
@@ -53,4 +60,15 @@
 
 .turn p, .turn button {
     font-size: 2em;
+}
+
+#winGame {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#playAgain {
+    font-size: 1.5em;
+    background-color: chartreuse;
+    border-radius: 15px;
 }

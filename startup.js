@@ -4,6 +4,7 @@ const territories = document.querySelectorAll('.territory');
 let currentPlayer = 0;
 let winner = false;
 document.getElementById("turn").style.display = "none";
+document.getElementById("winGame").style.display = "none";
 let mapTerritories = [];
 let attackFrom = 0;
 let attackTo = 0;
@@ -41,7 +42,7 @@ let id = Math.floor(Math.random() * 16);
 let mt = mapTerritories[id];
 mt.owner = 1;
 mt.homeBase = 1;
-mt.troops = 6;
+mt.troops = 9;
 //console.log(mt)
 
 
