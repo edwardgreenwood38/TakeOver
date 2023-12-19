@@ -31,25 +31,68 @@ function territoryAction(element) {
     // data is attack from
     let data = mapTerritories[terrNum.substring(9) - 1];
     //console.log(data);
-    if (data.owner === currentPlayer) {
-        t1.style.border = "2px solid red";
-        attackFrom = terrNum.substring(9);
-    }
-    
-    //console.log(`From: ${attackFrom}.  To: ${attackTo}`)
-    if (attackFrom != 0 && data.owner !== currentPlayer) {
+
+
+    // sets territory you are attacking to 
+    // if player has selected his own first
+    if (attackFrom != 0 && terrNum != attackFrom) {
         t1.style.border = "2px dashed red";
         attackTo = terrNum.substring(9);
+
+        //console.log(`From: ${attackFrom}.  Set To: ${attackTo}`)
     } 
+
+
+    // mark territory selected (if same as current palyer)
+    if (data.owner === currentPlayer && attackFrom == 0 && attackTo == 0) {
+        t1.style.border = "2px solid red";
+        attackFrom = terrNum.substring(9);
+
+        //console.log(`Set From: ${attackFrom}.  To: ${attackTo}`)
+    }
     
+
+    //console.log(`From: ${attackFrom}.  To: ${attackTo}.   TerrNum: ${terrNum}`)
+    
+    
+    // if from and to are different owners then attack.
+    if (attackFrom != 0 && attackTo != 0){
+        if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
+            let ca = document.getElementById("currentAction");
+            ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
+    
+            ca.textContent += `${attackResults()}`; 
+            
+    
+            attackFrom = 0;
+            attackTo = 0;
+
+            // clear display
+            territories.forEach(t => {
+                t.style.border = "2px solid black";
+            });
+        }
+    }
+    
+
+    // if from and to are same owner then move troop
     if (attackFrom != 0 && attackTo != 0) {
-        let ca = document.getElementById("currentAction");
-        ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
+        if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner &&
+            attackFrom != attackTo) {
+            let ca = document.getElementById("currentAction");
+            ca.textContent = `Moving troop from Territory${attackFrom} to Territory${attackTo}`;
+    
+            mapTerritories[attackFrom - 1].troops -= 1;
+            mapTerritories[attackTo - 1].troops += 1;
+    
+            attackFrom = 0;
+            attackTo = 0;
 
-        ca.textContent += `${attackResults()}`;
-
-        attackFrom = 0;
-        attackTo = 0;
+            // clear display
+            territories.forEach(t => {
+                t.style.border = "2px solid black";
+            });
+        }
     }
 
     updateDisplay();
