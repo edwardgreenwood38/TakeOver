@@ -218,7 +218,9 @@ function attackResults() {
 
 
 function winGame() {
+    document.getElementById("currentAction").textContent = "";
     document.getElementById("turn").style.display = "none";
+    
 
     document.getElementById("winGame").style.display = "block";
     if (currentPlayer === 1) {

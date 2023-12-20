@@ -22,6 +22,7 @@ territories.forEach(territory => {
 
 // random placement of start point
 function startGame() {
+    document.getElementById("currentAction").textContent = "";
     document.getElementById("start").style.display = "none";
     document.getElementById("gameInfo").style.display = "none";
     document.getElementById("winGame").style.display = "none";
