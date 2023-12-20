@@ -18,7 +18,59 @@ territories.forEach(territory => {
     });
 });
 
-
+//  potential list of country names
+const fantasyCountryNames = [
+    "Novaris",
+    "Astravia",
+    "Eldorium",
+    "Emberia",
+    "Solsticea",
+    "Arcadia",
+    "Sylvanoria",
+    "Crystalyn",
+    "Thornwood",
+    "Zephyrith",
+    "Celestalis",
+    "Aerilon",
+    "Shadowlyn",
+    "Mythralia",
+    "Valerian Reach",
+    "Phoenixia",
+    "Drakewood",
+    "Meridianos",
+    "Seraphine Dominion",
+    "Frostspire",
+    "Azurea",
+    "Midgardia",
+    "Verdanthia",
+    "Starhaven",
+    "Emberfall",
+    "Luminae",
+    "Galea",
+    "Havencrest",
+    "Obsidian Reach",
+    "Wyvernstead",
+    "Ardentia",
+    "Moonshroud",
+    "Mythrendor",
+    "Titan's Hold",
+    "Glimmerfall",
+    "Edenwood",
+    "Eclipsia",
+    "Sablestone",
+    "Astralyn",
+    "Wildermark",
+    "Stormwatch",
+    "Ironreach",
+    "Aurora Vale",
+    "Silverglade",
+    "Eternalis",
+    "Thundoria",
+    "Riftwood",
+    "Zenithia",
+    "Driftwood Isles",
+    "Radiantia"
+  ];
 
 
 // random placement of start point
@@ -47,8 +99,11 @@ function startGame() {
 
     // map setup
     for (let i = 1; i <= 25; i++) {
+        let num = Math.floor(Math.random() * 50);
+        let cn = fantasyCountryNames[num];
+
         let mt = {
-            name: "Territory" + i,
+            name: cn,
             owner: "Barbarian",
             troops: 1,
             homeBase: 0

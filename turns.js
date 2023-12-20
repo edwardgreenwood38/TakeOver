@@ -169,7 +169,7 @@ function updateDisplay() {
         // display territory title
         let mt = "territoryTitle" + i;
         let mapTitle = document.getElementById(mt);
-        mapTitle.textContent = "Territory " + i;
+        mapTitle.textContent = mapTerritories[i - 1].name;
 
         // dispaly nmber of troops
         mt = "troop" + i;
