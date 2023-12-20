@@ -154,6 +154,15 @@ function updateDisplay() {
         if (mapOwner.owner === 2) {
             pt.style.backgroundColor = "lightgreen";
         }
+
+        // mark home base
+        if (mapOwner.homeBase === 1) {
+            const base = "troop" + i;
+            const hb = document.getElementById(base);
+            hb.style.fontWeight = "bold";
+            hb.style.fontSize = "1.2em";
+            hb.style.border = "2px solid yellow";
+        }
         
         // display territory title
         let mt = "territoryTitle" + i;

@@ -32,6 +32,15 @@ function startGame() {
     territories.forEach(t => {
         t.style.backgroundColor = "";
     })
+
+    for (let i = 1; i <= 25; i++) {
+        let s = "troop" + i;
+        let sp = document.getElementById(s)
+        sp.style.border = "";
+        sp.style.fontWeight = "";
+        sp.style.fontSize = ".9em";
+    }
+
     mapTerritories = [];
 
     // map setup
