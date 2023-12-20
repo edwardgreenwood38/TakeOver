@@ -16,12 +16,30 @@ body {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    background-color: #ffdfdf;
 }
+
+#mainView {
+    width: 90%;
+    display: none;
+}
+
+#turnAction {
+    overflow-y: scroll;
+    height: 425px;
+    background-color: white;
+    border: 3px double black;
+    width: 300px;
+}
+
+/* #hr {
+    margin-top: 20px;
+} */
 
 #map {
     width: 500px;
     margin: 0 auto;
-    display: none;
+    /* display: none; */
 }
 
 .title {

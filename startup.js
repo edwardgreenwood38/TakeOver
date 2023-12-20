@@ -4,6 +4,7 @@ let currentPlayer = 0;
 let winner = false;
 document.getElementById("turn").style.display = "none";
 document.getElementById("winGame").style.display = "none";
+document.getElementById("mainView").style.display = "none";
 let mapTerritories = [];
 let attackFrom = 0;
 let attackTo = 0;
@@ -22,12 +23,13 @@ territories.forEach(territory => {
 
 // random placement of start point
 function startGame() {
-    document.getElementById("currentAction").textContent = "";
+    document.getElementById("turnAction").textContent = "";
     document.getElementById("start").style.display = "none";
     document.getElementById("gameInfo").style.display = "none";
     document.getElementById("winGame").style.display = "none";
-    document.getElementById("map").style.display = "block";
+    document.getElementById("mainView").style.display = "flex";
     document.getElementById("turn").style.display = "block";
+
 
     territories.forEach(t => {
         t.style.backgroundColor = "";

@@ -58,10 +58,10 @@ function territoryAction(element) {
     // if from and to are different owners then attack.
     if (attackFrom != 0 && attackTo != 0){
         if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
-            let ca = document.getElementById("currentAction");
-            ca.textContent = `Attacking ${attackTo} from ${attackFrom}`;
+            let ca = document.getElementById("turnAction");
+            ca.innerHTML += `<div>Attacking ${attackTo} from ${attackFrom}</div>`;
     
-            ca.textContent += `${attackResults()}`; 
+            ca.innerHTML += `<div>${attackResults()}</div>`; 
             
 
             // clear display
@@ -79,8 +79,8 @@ function territoryAction(element) {
     if (attackFrom != 0 && attackTo != 0) {
         if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner &&
             attackFrom != attackTo) {
-            let ca = document.getElementById("currentAction");
-            ca.textContent = `Moving troop from Territory${attackFrom} to Territory${attackTo}`;
+            let ca = document.getElementById("turnAction");
+            ca.innerHTML += `<div>Moving troop from Territory${attackFrom} to Territory${attackTo}</div>`;
     
             mapTerritories[attackFrom - 1].troops -= 1;
             mapTerritories[attackTo - 1].troops += 1;
@@ -100,6 +100,8 @@ function territoryAction(element) {
 
 
 function endTurn() {
+    document.getElementById("turnAction").innerHTML += `<div>Player ${currentPlayer} ended thier turn.</div>`;
+
     if (currentPlayer === 1) {
         currentPlayer = 2;
 
@@ -227,7 +229,6 @@ function attackResults() {
 
 
 function winGame() {
-    document.getElementById("currentAction").textContent = "";
     document.getElementById("turn").style.display = "none";
     
 
