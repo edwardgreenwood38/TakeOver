@@ -14,12 +14,14 @@ body {
     text-align: center;
     cursor: pointer;
     background-color: #ffdfdf;
-    outline: 1px solid red;
+    
 }
 
 #mainView {
     width: 90%;
     display: none;
+    /* outline: 1px solid red; */
+    margin: 0px auto;
 }
 
 #turnAction {
@@ -28,6 +30,7 @@ body {
     background-color: white;
     border: 3px double black;
     width: 300px;
+    /* outline: 1px solid red; */
 }
 
 /* #hr {
@@ -40,6 +43,7 @@ body {
     margin: 0 auto;
     display:flex;
     flex-wrap: wrap;
+    /* outline: 1px solid red; */
 }
 
 .title {
