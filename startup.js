@@ -35,7 +35,7 @@ function startGame() {
     mapTerritories = [];
 
     // map setup
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 25; i++) {
         let mt = {
             name: "Territory" + i,
             owner: "Barbarian",
@@ -49,7 +49,7 @@ function startGame() {
     currentPlayer = 1;
 
     // player one
-    let id = Math.floor(Math.random() * 16);
+    let id = Math.floor(Math.random() * 25);
     //placement(id, 'lightblue');
     let mt = mapTerritories[id];
     mt.owner = 1;
@@ -59,7 +59,7 @@ function startGame() {
 
 
     // player two
-    id = Math.floor(Math.random() * 16);
+    id = Math.floor(Math.random() * 25);
     //placement(id, 'lightgreen');
     mt = mapTerritories[id];
     //console.log(mt);

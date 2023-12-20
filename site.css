@@ -9,12 +9,12 @@ body {
     /* Define styles for each territory */
     /* You can use different colors, borders, etc. */
     border: 2px solid #000;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     display: inline-block;
     margin: 2px;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
     cursor: pointer;
 }
 
@@ -51,6 +51,7 @@ body {
 
 .territoryTitle {
     margin: 1px auto;
+    font-size: .9em;
 }
 
 .turn {
