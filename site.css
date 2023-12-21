@@ -25,12 +25,18 @@ body {
 }
 
 #turnAction {
-    overflow-y: scroll;
-    height: 500px;
-    background-color: white;
+    height: 560px;
     border: 3px double black;
     width: 300px;
     /* outline: 1px solid red; */
+}
+
+#turnResults {
+    overflow-y: scroll;
+    height: 400px;
+    background-color: white;
+    border: 3px double black;
+    width: 295px;
 }
 
 /* #hr {
@@ -82,11 +88,17 @@ body {
 
 .turn {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 5px;
 }
 
 .turn p, .turn button {
     font-size: 2em;
+}
+
+.turn button {
+    border-radius: 20px;
+    background-color: darkgreen;
+    color: white;
 }
 
 #winGame {

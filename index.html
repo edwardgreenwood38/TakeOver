@@ -130,6 +130,13 @@
 
         <!--  action view  -->
         <aside id="turnAction">
+            <div id="turnResults"></div>
+            
+            <div class="turn" id="turn">
+                <p id="playerTurn"></p>
+                
+                <button id="endTurn" type="button" onclick="endTurn()">End Turn</button>
+            </div>
         </aside>
     </div>
     
@@ -141,11 +148,7 @@
         <button id="start" type="button" onclick="startGame()">Start Game</button>
     </div>
 
-    <div class="turn" id="turn">
-        <p id="playerTurn"></p>
-        
-        <button id="endTurn" type="button" onclick="endTurn()">End Turn</button>
-    </div>
+    
 
     <!--  win game view  -->
     <div id="winGame">

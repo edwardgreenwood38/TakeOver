@@ -75,7 +75,7 @@ const fantasyCountryNames = [
 
 // random placement of start point
 function startGame() {
-    document.getElementById("turnAction").textContent = "";
+    document.getElementById("turnResults").textContent = "";
     document.getElementById("start").style.display = "none";
     document.getElementById("gameInfo").style.display = "none";
     document.getElementById("winGame").style.display = "none";
