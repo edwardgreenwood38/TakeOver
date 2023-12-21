@@ -208,7 +208,7 @@ function attackResults() {
         if (mapTerritories[attackTo - 1].troops <= 0) {
             mapTerritories[attackTo - 1].owner = currentPlayer;
 
-            if (mapTerritories[attackTo - 1].homeBase === 1 && mapTerritories[attackTo - 1].troops === 0) {
+            if (mapTerritories[attackTo - 1].homeBase === 1 && mapTerritories[attackTo - 1].troops <= 0) {
                 winGame();
             }
 

@@ -131,12 +131,18 @@
         <!--  action view  -->
         <aside id="turnAction">
             <div id="turnResults"></div>
-            
+
             <div class="turn" id="turn">
                 <p id="playerTurn"></p>
                 
                 <button id="endTurn" type="button" onclick="endTurn()">End Turn</button>
             </div>
+
+            <!--  win game view  -->
+            <div id="winGame">
+            <p id="winGameText"></p>
+            <button id="playAgain" type="button" onclick="startGame()">Play Again</button>
+    </div>
         </aside>
     </div>
     
@@ -150,11 +156,7 @@
 
     
 
-    <!--  win game view  -->
-    <div id="winGame">
-        <p id="winGameText"></p>
-        <button id="playAgain" type="button" onclick="startGame()">Play Again</button>
-    </div>
+    
     
 
     <script src="./turns.js"></script>
