@@ -60,7 +60,7 @@ function territoryAction(element) {
         if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
             let ca = document.getElementById("turnResults");
             
-            ca.innerHTML += `<div>Attacking ${attackTo} from ${attackFrom}</div>`;
+            ca.innerHTML += `<div>Attacking ${mapTerritories[attackTo - 1].name} from ${mapTerritories[attackFrom - 1].name}</div>`;
             ca.innerHTML += `<div>${attackResults()}</div>`; 
             ca.scrollTop = ca.scrollHeight;
             
@@ -81,7 +81,7 @@ function territoryAction(element) {
         if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner &&
             attackFrom != attackTo) {
             let ca = document.getElementById("turnResults");
-            ca.innerHTML += `<div>Moving troop from Territory${attackFrom} to Territory${attackTo}</div>`;
+            ca.innerHTML += `<div>Moving troop from ${mapTerritories[attackFrom - 1].name} to ${mapTerritories[attackTo - 1].name}</div>`;
             ca.scrollTop = ca.scrollHeight;
     
             mapTerritories[attackFrom - 1].troops -= 1;
