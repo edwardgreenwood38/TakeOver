@@ -59,9 +59,10 @@ function territoryAction(element) {
     if (attackFrom != 0 && attackTo != 0){
         if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
             let ca = document.getElementById("turnResults");
+            
             ca.innerHTML += `<div>Attacking ${attackTo} from ${attackFrom}</div>`;
-    
             ca.innerHTML += `<div>${attackResults()}</div>`; 
+            ca.scrollTop = ca.scrollHeight;
             
 
             // clear display
@@ -81,6 +82,7 @@ function territoryAction(element) {
             attackFrom != attackTo) {
             let ca = document.getElementById("turnResults");
             ca.innerHTML += `<div>Moving troop from Territory${attackFrom} to Territory${attackTo}</div>`;
+            ca.scrollTop = ca.scrollHeight;
     
             mapTerritories[attackFrom - 1].troops -= 1;
             mapTerritories[attackTo - 1].troops += 1;
@@ -100,7 +102,9 @@ function territoryAction(element) {
 
 
 function endTurn() {
-    document.getElementById("turnResults").innerHTML += `<div>Player ${currentPlayer} ended thier turn.</div>`;
+    const turnResults = document.getElementById("turnResults");
+    turnResults.innerHTML += `<div>Player ${currentPlayer} ended thier turn.</div>`;
+    turnResults.scrollTop = turnResults.scrollHeight;
 
     if (currentPlayer === 1) {
         currentPlayer = 2;
