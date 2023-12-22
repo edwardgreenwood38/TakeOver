@@ -36,8 +36,22 @@ function territoryAction(element) {
     // sets territory you are attacking to 
     // if player has selected his own first
     if (attackFrom != 0 && terrNum != attackFrom) {
-        t1.style.border = "2px dashed red";
-        attackTo = terrNum.substring(9);
+        
+        const north = parseInt(attackFrom) - 5;
+        const east = parseInt(attackFrom) + 1;
+        const south = parseInt(attackFrom) + 5;
+        const west = parseInt(attackFrom) - 1;
+        const tn = parseInt(terrNum.substring(9));
+        //console.log(`Territory: ${terrNum} ::: attackFrom: ${number}`)
+        if (tn === north || tn === east || tn === south || tn === west) {
+            t1.style.border = "2px dashed red";
+            attackTo = terrNum.substring(9);
+        }
+        else {
+            //console.log(`Territory: ${terrNum} -- attackFrom: ${number}`)
+            illegalMove('You can not reach that territory', 3000);
+        }
+        
 
         //console.log(`From: ${attackFrom}.  Set To: ${attackTo}`)
     } 
@@ -105,6 +119,8 @@ function endTurn() {
     const turnResults = document.getElementById("turnResults");
     turnResults.innerHTML += `<div>Player ${currentPlayer} ended thier turn.</div>`;
     turnResults.scrollTop = turnResults.scrollHeight;
+    attackFrom = 0;
+    attackTo = 0;
 
     if (currentPlayer === 1) {
         currentPlayer = 2;
@@ -246,4 +262,14 @@ function winGame() {
 
     let win = document.getElementById("winGameText")
     win.textContent = `Player ${currentPlayer} has won by taking the other player home base.`;
+}
+
+function illegalMove(msg, duration) {
+    const el = document.createElement("div");
+    el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;font-size:1.5em;");
+    el.innerHTML = msg;
+    setTimeout(function(){
+     el.parentNode.removeChild(el);
+    },duration);
+    document.body.appendChild(el);
 }
