@@ -116,7 +116,6 @@ function startGame() {
 
     // player one
     let id = Math.floor(Math.random() * 25);
-    //placement(id, 'lightblue');
     let mt = mapTerritories[id];
     mt.owner = 1;
     mt.homeBase = 1;
@@ -126,14 +125,18 @@ function startGame() {
 
     // player two
     id = Math.floor(Math.random() * 25);
-    //placement(id, 'lightgreen');
     mt = mapTerritories[id];
     //console.log(mt);
+    if (mt.owner === 1) {
+        id = Math.floor(Math.random() * 25);
+        mt = mapTerritories[id];
+    }
+
     mt.owner = 2;
     mt.homeBase = 1;
     mt.troops = 6;
-
-
+    
+    
     updateDisplay()
 }
 
