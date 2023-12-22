@@ -35,7 +35,7 @@ function territoryAction(element) {
 
     // sets territory you are attacking to 
     // if player has selected his own first
-    if (attackFrom != 0 && terrNum != attackFrom) {
+    if (attackFrom != 0 && terrNum.substring(9) != attackFrom) {
         
         const north = parseInt(attackFrom) - 5;
         const east = parseInt(attackFrom) + 1;
@@ -110,6 +110,13 @@ function territoryAction(element) {
             });
         }
     }
+
+
+    // unselect territory
+    // if (document.getElementById(terrNum).style.border == '2px solid red') {
+    //     attackFrom = 0;
+    //     document.getElementById(terrNum).style.border = '2px solid black';
+    // }
 
     updateDisplay();
 }
