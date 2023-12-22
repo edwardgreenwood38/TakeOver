@@ -78,6 +78,7 @@ function territoryAction(element) {
             ca.innerHTML += `<div>${attackResults()}</div>`; 
             ca.scrollTop = ca.scrollHeight;
             
+            swordSound.play();
 
             // clear display
             territories.forEach(t => {
@@ -97,6 +98,8 @@ function territoryAction(element) {
             let ca = document.getElementById("turnResults");
             ca.innerHTML += `<div>Moving troop from ${mapTerritories[attackFrom - 1].name} to ${mapTerritories[attackTo - 1].name}</div>`;
             ca.scrollTop = ca.scrollHeight;
+
+            march(1500);
     
             mapTerritories[attackFrom - 1].troops -= 1;
             mapTerritories[attackTo - 1].troops += 1;
@@ -279,4 +282,12 @@ function illegalMove(msg, duration) {
      el.parentNode.removeChild(el);
     },duration);
     document.body.appendChild(el);
+}
+
+function march(time){
+    let marching = new Audio("./sounds/Person Walking On Gravel.mp3");
+    marching.play();
+    setTimeout(() => {
+        marching.pause();
+    }, time);
 }

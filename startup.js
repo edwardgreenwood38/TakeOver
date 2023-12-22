@@ -8,6 +8,8 @@ document.getElementById("mainView").style.display = "none";
 let mapTerritories = [];
 let attackFrom = 0;
 let attackTo = 0;
+const swordSound = new Audio("./sounds/shield impact with sword.mp3");
+const movementSound = new Audio("./sounds/Person Walking On Gravel.mp3")
 
 
 // Add a click event listener to territories
@@ -136,7 +138,7 @@ function startGame() {
     mt.homeBase = 1;
     mt.troops = 6;
     
-    
+
     updateDisplay()
 }
 
