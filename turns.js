@@ -237,6 +237,7 @@ function attackResults() {
         // check if take over territory
         if (mapTerritories[attackTo - 1].troops <= 0) {
             mapTerritories[attackTo - 1].owner = currentPlayer;
+            winSound.play();
 
             if (mapTerritories[attackTo - 1].homeBase === 1 && mapTerritories[attackTo - 1].troops <= 0) {
                 winGame();

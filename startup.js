@@ -9,7 +9,8 @@ let mapTerritories = [];
 let attackFrom = 0;
 let attackTo = 0;
 const swordSound = new Audio("./sounds/shield impact with sword.mp3");
-const movementSound = new Audio("./sounds/Person Walking On Gravel.mp3")
+const movementSound = new Audio("./sounds/Person Walking On Gravel.mp3");
+const winSound = new Audio("./sounds/Up and Low Beep.mp3");
 
 
 // Add a click event listener to territories
