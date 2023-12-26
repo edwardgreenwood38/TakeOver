@@ -112,17 +112,36 @@ function territoryAction(element) {
 
     // if from and to are same owner then move troop
     if (attackFrom != 0 && attackTo != 0) {
-        if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner &&
-            attackFrom != attackTo) {
-            let ca = document.getElementById("turnResults");
-            ca.innerHTML += `<div>Moving troop from ${mapTerritories[attackFrom - 1].name} to ${mapTerritories[attackTo - 1].name}</div>`;
+        let ca = document.getElementById("turnResults");
+
+        // check if more than one troop is available for movement
+        if (mapTerritories[attackFrom - 1].troops > 1) {
+            if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner &&
+                attackFrom != attackTo) {
+                
+                ca.innerHTML += `<div>Moving troop from ${mapTerritories[attackFrom - 1].name} to ${mapTerritories[attackTo - 1].name}</div>`;
+                ca.scrollTop = ca.scrollHeight;
+    
+                march(1500);
+        
+                mapTerritories[attackFrom - 1].troops -= 1;
+                mapTerritories[attackTo - 1].troops += 1;
+        
+                attackFrom = 0;
+                attackTo = 0;
+    
+                // clear display
+                territories.forEach(t => {
+                    t.style.border = "2px solid black";
+                });
+            }
+        }
+        else if (mapTerritories[attackFrom - 1].owner == mapTerritories[attackTo - 1].owner && attackFrom != attackTo) {
+            ca.innerHTML += `<div>You do not have enough troops in ${mapTerritories[attackFrom - 1].name} to fortify with.`;
             ca.scrollTop = ca.scrollHeight;
 
-            march(1500);
-    
-            mapTerritories[attackFrom - 1].troops -= 1;
-            mapTerritories[attackTo - 1].troops += 1;
-    
+            illegalMove('You do not hae enought troops to fortify with.', 2000);
+
             attackFrom = 0;
             attackTo = 0;
 
@@ -131,6 +150,7 @@ function territoryAction(element) {
                 t.style.border = "2px solid black";
             });
         }
+        
     }
 
 
