@@ -71,14 +71,31 @@ function territoryAction(element) {
     
     // if from and to are different owners then attack.
     if (attackFrom != 0 && attackTo != 0){
-        if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
-            let ca = document.getElementById("turnResults");
-            
-            ca.innerHTML += `<div>Attacking ${mapTerritories[attackTo - 1].name} from ${mapTerritories[attackFrom - 1].name}</div>`;
-            ca.innerHTML += `<div>${attackResults()}</div>`; 
+        let ca = document.getElementById("turnResults");
+
+        // check if enough troops to attack
+        if (mapTerritories[attackFrom - 1].troops >= 4) {
+            if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {                
+                ca.innerHTML += `<div>Attacking ${mapTerritories[attackTo - 1].name} from ${mapTerritories[attackFrom - 1].name}</div>`;
+                ca.innerHTML += `<div>${attackResults()}</div>`; 
+                ca.scrollTop = ca.scrollHeight;
+                
+                swordSound.play();
+    
+                // clear display
+                territories.forEach(t => {
+                    t.style.border = "2px solid black";
+                });
+    
+                attackFrom = 0;
+                attackTo = 0;
+            }
+        }
+        else if (mapTerritories[attackFrom - 1].owner != mapTerritories[attackTo - 1].owner) {
+            ca.innerHTML += `<div>You do not have enough troops in ${mapTerritories[attackFrom - 1].name} to attack.</div>`;
             ca.scrollTop = ca.scrollHeight;
-            
-            swordSound.play();
+
+            illegalMove('You do not have enough troops to attack.', 2000);
 
             // clear display
             territories.forEach(t => {
@@ -88,6 +105,8 @@ function territoryAction(element) {
             attackFrom = 0;
             attackTo = 0;
         }
+
+        
     }
     
 
