@@ -140,7 +140,7 @@ function territoryAction(element) {
             ca.innerHTML += `<div>You do not have enough troops in ${mapTerritories[attackFrom - 1].name} to fortify with.`;
             ca.scrollTop = ca.scrollHeight;
 
-            illegalMove('You do not hae enought troops to fortify with.', 2000);
+            illegalMove('You do not have enought troops to fortify with.', 2000);
 
             attackFrom = 0;
             attackTo = 0;
