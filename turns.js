@@ -196,9 +196,36 @@ function placeTroops(cp) {
         let mt = mapTerritories[i-1];
         //console.log(mt);
         if (mt.owner === cp && mt.homeBase === 1) {
-            //console.log(mt.troops);
-            let num = mt.troops + 3;
-            mt.troops = num;
+            let num = 3;
+            let tCount = 0;
+            //console.log(mt);
+
+            // calculate number of troops to get based on number of territorites owned
+            for (let j = 0; j < mapTerritories.length; j++) {
+                if (mapTerritories[j].owner === cp) {
+                    tCount++;
+                }
+
+                //console.log(tCount);
+            }
+
+            // grant troops
+            if (tCount >= 12) {
+                num += 4;
+            }
+            else if (tCount >= 8) {
+                num += 2;
+            }
+            else if (tCount >= 4) {
+                num += 1;
+            }
+
+
+            let ca = document.getElementById("turnResults");
+            ca.innerHTML += `<div>Player ${cp} gained ${num} troops.`;
+            ca.scrollTop = ca.scrollHeight;
+
+            mt.troops += num;
             //console.log(mt.troops);
         }
 
