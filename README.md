@@ -9,4 +9,6 @@ The game is turned based for each player. Player 1 is you and Player 2 is an AI 
 # Game Mechanics
 You receive new troops each turn based on the total number of territories you control. You click on the territory you want to attack from and then the territory you want to attack. You get feed back as to the results of each attack.  You can end your turn anytime by clicking on 'End Turn' button.
 
+
+# Features
 The game includes sounds and uses HTML tag blocks as territories. These are customized using CSS. JavaScript controls the flow of the turn, by click function.
