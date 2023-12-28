@@ -176,6 +176,7 @@ function endTurn() {
 
         // add new troops to home base
         placeTroops(currentPlayer);
+        computerPlayer();
     } 
     else {
         currentPlayer = 1;
@@ -357,4 +358,90 @@ function march(time){
     setTimeout(() => {
         marching.pause();
     }, time);
+}
+
+
+function computerPlayer() {
+    let ownedTerrritories = [];
+    cav = [];
+
+    // decide which territory to attack from
+    for (let i = 0; i < mapTerritories.length; i++) {
+        // find owned territories
+        if (mapTerritories[i].owner == currentPlayer) {
+            ownedTerrritories.push(i);
+            
+        }
+    }
+
+    //console.log(ownedTerrritories);
+
+    // get list of territories can attack from/to
+    let attackList = getCPlist(ownedTerrritories);
+
+
+    // select which attack to perform
+    let r = Math.floor(Math.random() * parseInt(attackList.length));
+    //console.log(`num: ${r}. || attackList: ${attackList}`)
+    attack = attackList[r];
+    
+
+    console.log(attack);
+}
+
+
+// check if adjacent territory is owned by currentplayer
+function getCPlist(owned) {
+    for (let i = 0; i < owned.length; i++) {
+        let cpa = {af: 0, at: 0, av: 0}
+
+        // check adjacent territories
+        let ot = owned[i];
+
+        if (ot - 1 >= 0) {
+            if (mapTerritories[ot].owner != mapTerritories[ot - 1].owner && mapTerritories[ot].troops > 3) {
+                if (mapTerritories[ot].troops > mapTerritories[ot - 1].troops) {
+                    cpa = {af: ot, at: ot - 1, av: 1};
+    
+                    cav.push(cpa);
+                }
+            }
+        }
+        
+
+        if (ot - 5 >= 0) {
+            if (mapTerritories[ot].owner != mapTerritories[ot - 5].owner && mapTerritories[ot].troops > 3) {
+                if (mapTerritories[ot].troops > mapTerritories[ot - 5].troops) {
+                    cpa = {af: ot, at: ot - 5, av: 1};
+    
+                    cav.push(cpa);
+                }
+            }
+        }
+        
+
+        if (ot + 1 < 25) {
+            if (mapTerritories[ot].owner != mapTerritories[ot + 1].owner && mapTerritories[ot].troops > 3) {
+                if (mapTerritories[ot].troops > mapTerritories[ot + 1].troops) {
+                    cpa = {af: ot, at: ot + 1, av: 1};
+    
+                    cav.push(cpa);
+                }
+            }
+        }
+
+
+        if (ot + 5 < 25) {
+            if (mapTerritories[ot].owner != mapTerritories[ot + 5].owner && mapTerritories[ot].troops > 3) {
+                if (mapTerritories[ot].troops > mapTerritories[ot + 5].troops) {
+                    cpa = {af: ot, at: ot + 5, av: 1};
+    
+                    cav.push(cpa);
+                }
+            }
+        }
+        
+    }
+
+    return cav;
 }
