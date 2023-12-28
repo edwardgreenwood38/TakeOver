@@ -385,8 +385,32 @@ function computerPlayer() {
     //console.log(`num: ${r}. || attackList: ${attackList}`)
     attack = attackList[r];
     
+    //console.log(attack);
 
-    console.log(attack);
+    // process selected attack
+    attackFrom = attack.af + 1;
+    attackTo = attack.at + 1;
+
+    let ca = document.getElementById("turnResults");
+    ca.innerHTML += `<div>Attacking ${mapTerritories[attackTo - 1].name} from ${mapTerritories[attackFrom - 1].name}</div>`;
+    ca.innerHTML += `<div>${attackResults()}</div>`; 
+    ca.scrollTop = ca.scrollHeight;
+    
+    swordSound.play();
+
+    // clear display
+    territories.forEach(t => {
+        t.style.border = "2px solid black";
+    });
+
+    attackFrom = 0;
+    attackTo = 0;
+
+    updateDisplay();
+
+
+    // end of computer turn
+    endTurn();
 }
 
 
