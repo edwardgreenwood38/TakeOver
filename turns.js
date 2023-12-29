@@ -409,6 +409,21 @@ function computerPlayer() {
     updateDisplay();
 
 
+    // fortify troops
+    let fortifyList = [];
+    ownedTerrritories = [];
+    // get owned territories
+    for (let i = 0; i < mapTerritories.length; i++) {
+        // find owned territories
+        if (mapTerritories[i].owner == currentPlayer && mapTerritories[i].troops >= 3) {
+            ownedTerrritories.push(i);
+        }
+    }
+
+    // get list of territories allowed to fortify from
+    fortifyList(ownedTerrritories);
+
+
     // end of computer turn
     endTurn();
 }
@@ -468,4 +483,25 @@ function getCPlist(owned) {
     }
 
     return cav;
+}
+
+
+// gets possible sources to move from
+function fortifyFrom(owned) {
+    let cpf = {};
+
+    for (let i = 0; i < owned.length; i++) {
+        let cpf = {};
+
+        if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] - 1].troops) {
+            cpf = {mf: owned[i], mt: owned[i - 1], mv: 1};
+
+            cfv.push(cpf);
+        }
+
+
+        if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] - 5].troops)
+    }
+
+    return cfv;
 }

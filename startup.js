@@ -11,7 +11,8 @@ let attackTo = 0;
 const swordSound = new Audio("./sounds/shield impact with sword.mp3");
 const movementSound = new Audio("./sounds/Person Walking On Gravel.mp3");
 const winSound = new Audio("./sounds/Up and Low Beep.mp3");
-let cav = [];
+let cav = []; // computer attack values
+let cfv = []; // computer fortify values
 
 
 // Add a click event listener to territories
