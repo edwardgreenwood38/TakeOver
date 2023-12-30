@@ -163,3 +163,28 @@ function placement(num, playerColor) {
 }
 
 
+function playerValidation() {
+    const rbCheck = document.getElementsByName("players");
+    const msg = document.getElementById("msg");
+    let playerCheck = false;
+
+    for (let i = 0; i < rbCheck.length; i++) {
+        if (rbCheck[i].checked) {
+            playerCheck = true;
+        }
+    }
+
+    if (playerCheck) {
+        msg.innerText = "";
+        document.getElementById("numberOfPlayers").style.border = "1px solid black";
+        startGame();
+    }
+    else {
+        
+        msg.style.color = "Red";
+        msg.style.fontWeight = "Bold";
+        msg.innerText = "Please select number of players.";
+
+        document.getElementById("numberOfPlayers").style.border = "3px solid red";
+    }
+}
