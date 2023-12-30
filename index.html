@@ -21,6 +21,7 @@
     </div>
 
 
+
     <!--  main view  -->
     <div id="mainView">
         <!--  map view  -->
@@ -141,9 +142,9 @@
 
             <!--  win game view  -->
             <div id="winGame">
-            <p id="winGameText"></p>
-            <button id="playAgain" type="button" onclick="startGame()">Play Again</button>
-    </div>
+                <p id="winGameText"></p>
+                <!-- <button id="playAgain" type="button" onclick="startGame()">Play Again</button> -->
+            </div>
         </aside>
     </div>
     
@@ -151,7 +152,14 @@
     <hr id="hr">
 
     <!--  menu  -->
-    <div class="menu">
+    <div class="menu" id="menu">
+        <div class="numberOfPlayers">
+            <input type="radio" id="player1" name="players" value="1">
+            <label for="player1">1 Player</label>
+            <input type="radio" id="player2" name="players" value="2">
+            <label for="player2">2 Player</label>
+        </div>
+        <br>
         <button id="start" type="button" onclick="startGame()">Start Game</button>
     </div>
 
