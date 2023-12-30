@@ -176,7 +176,12 @@ function endTurn() {
 
         // add new troops to home base
         placeTroops(currentPlayer);
-        computerPlayer();
+        
+        // only run if number of players is 1
+        if (numberOfPlayers == 1) {
+            computerPlayer();
+        }
+        
     } 
     else {
         currentPlayer = 1;
@@ -340,6 +345,8 @@ function winGame() {
 
     let win = document.getElementById("winGameText")
     win.textContent = `Player ${currentPlayer} has won by taking the other player home base.`;
+
+    document.getElementById("menu").style.display = "block";
 }
 
 function illegalMove(msg, duration) {

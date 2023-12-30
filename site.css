@@ -2,6 +2,16 @@ body {
     background-color: #ddd;
 }
 
+.numberOfPlayers {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 50%;
+    display: inline-block;
+    background-color: cyan;
+    border-radius: 40px;
+}
 
 /* CSS for the map */
 /* Define styles for territories */
@@ -70,7 +80,7 @@ body {
 
 .menu {
     text-align: center;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .menu button {

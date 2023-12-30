@@ -13,6 +13,8 @@ const movementSound = new Audio("./sounds/Person Walking On Gravel.mp3");
 const winSound = new Audio("./sounds/Up and Low Beep.mp3");
 let cav = []; // computer attack values
 let cfv = []; // computer fortify values
+const nop = document.getElementsByName("players");
+let numberOfPlayers = 0
 
 
 // Add a click event listener to territories
@@ -81,7 +83,7 @@ const fantasyCountryNames = [
 // random placement of start point
 function startGame() {
     document.getElementById("turnResults").textContent = "";
-    document.getElementById("start").style.display = "none";
+    document.getElementById("menu").style.display = "none";
     document.getElementById("gameInfo").style.display = "none";
     document.getElementById("winGame").style.display = "none";
     document.getElementById("mainView").style.display = "flex";
