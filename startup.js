@@ -87,6 +87,13 @@ function startGame() {
     document.getElementById("mainView").style.display = "flex";
     document.getElementById("turn").style.display = "block";
 
+    for (let i = 0; i < nop.length; i++) {
+        if (nop[i].checked) {
+            numberOfPlayers = nop[i].value;
+        }
+    }
+    //console.log(numberOfPlayers);
+
 
     territories.forEach(t => {
         t.style.backgroundColor = "";
