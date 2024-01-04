@@ -202,7 +202,7 @@ function placeTroops(cp) {
         let mt = mapTerritories[i-1];
         //console.log(mt);
         if (mt.owner === cp && mt.homeBase === 1) {
-            let num = 3;
+            let num = 2;
             let tCount = 0;
             //console.log(mt);
 

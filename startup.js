@@ -133,7 +133,7 @@ function startGame() {
     let mt = mapTerritories[id];
     mt.owner = 1;
     mt.homeBase = 1;
-    mt.troops = 9;
+    mt.troops = 7;
     //console.log(mt)
 
 
@@ -148,7 +148,7 @@ function startGame() {
 
     mt.owner = 2;
     mt.homeBase = 1;
-    mt.troops = 6;
+    mt.troops = 5;
     
 
     updateDisplay()
