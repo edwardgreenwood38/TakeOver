@@ -36,11 +36,32 @@ function territoryAction(element) {
     // sets territory you are attacking to 
     // if player has selected his own first
     if (attackFrom != 0 && terrNum.substring(9) != attackFrom) {
+        let north = 0;
+        let east = 0;
+        let south = 0;
+        let west = 0;
+
+        north = parseInt(attackFrom) - 5;
         
-        const north = parseInt(attackFrom) - 5;
-        const east = parseInt(attackFrom) + 1;
-        const south = parseInt(attackFrom) + 5;
-        const west = parseInt(attackFrom) - 1;
+        if (parseInt(attackFrom) + 1 === 6 || parseInt(attackFrom) + 1 === 16 ||
+            parseInt(attackFrom) + 1 === 16 || parseInt(attackFrom) + 1 === 21) {
+            // do nothing
+        }
+        else {
+            east = parseInt(attackFrom) + 1;
+        }
+        south = parseInt(attackFrom) + 5;
+
+        if (parseInt(attackFrom) - 1 === 5 || parseInt(attackFrom) - 1 === 10 ||
+            parseInt(attackFrom) - 1 === 15 || parseInt(attackFrom) - 1 === 20) {
+            // do nothing
+        }
+        else {
+            west = parseInt(attackFrom) - 1;
+        }
+        
+        
+
         const tn = parseInt(terrNum.substring(9));
         //console.log(`Territory: ${terrNum} ::: attackFrom: ${number}`)
         if (tn === north || tn === east || tn === south || tn === west) {
@@ -50,6 +71,11 @@ function territoryAction(element) {
         else {
             //console.log(`Territory: ${terrNum} -- attackFrom: ${number}`)
             illegalMove('You can not reach that territory', 3000);
+            attackFrom = 0;
+            attackTo = 0;
+            t1.style.border = "2px solid black";
+
+            updateDisplay();
         }
         
 
@@ -368,6 +394,7 @@ function march(time){
 }
 
 
+// computer AI section
 function computerPlayer() {
     let ownedTerrritories = [];
     cav = [];
@@ -470,6 +497,7 @@ function computerPlayer() {
 
 // check if adjacent territory is owned by currentplayer
 function getCPlist(owned) {
+    console.log(`owned territories: ${owned}`);
     for (let i = 0; i < owned.length; i++) {
         let cpa = {af: 0, at: 0, av: 0}
 
@@ -477,13 +505,20 @@ function getCPlist(owned) {
         let ot = owned[i];
 
         if (ot - 1 >= 0) {
-            if (mapTerritories[ot].owner != mapTerritories[ot - 1].owner && mapTerritories[ot].troops > 3) {
-                if (mapTerritories[ot].troops > mapTerritories[ot - 1].troops) {
-                    cpa = {af: ot, at: ot - 1, av: 1};
-    
-                    cav.push(cpa);
+            // map wrap check
+            if (ot - 1 == 4 || ot - 1 == 9 || ot - 1 == 14 || ot - 1 == 19) {
+                // do nothing
+            }
+            else {
+                if (mapTerritories[ot].owner != mapTerritories[ot - 1].owner && mapTerritories[ot].troops > 3) {
+                    if (mapTerritories[ot].troops > mapTerritories[ot - 1].troops) {
+                        cpa = {af: ot, at: ot - 1, av: 1};
+        
+                        cav.push(cpa);
+                    }
                 }
             }
+            
         }
         
 
@@ -499,13 +534,20 @@ function getCPlist(owned) {
         
 
         if (ot + 1 < 25) {
-            if (mapTerritories[ot].owner != mapTerritories[ot + 1].owner && mapTerritories[ot].troops > 3) {
-                if (mapTerritories[ot].troops > mapTerritories[ot + 1].troops) {
-                    cpa = {af: ot, at: ot + 1, av: 1};
-    
-                    cav.push(cpa);
+            // map wrap check
+            if (ot + 1 == 5 || ot + 1 == 10 || ot + 1 == 15 || ot + 1 == 20) {
+                // do nothing
+            }
+            else {
+                if (mapTerritories[ot].owner != mapTerritories[ot + 1].owner && mapTerritories[ot].troops > 3) {
+                    if (mapTerritories[ot].troops > mapTerritories[ot + 1].troops) {
+                        cpa = {af: ot, at: ot + 1, av: 1};
+        
+                        cav.push(cpa);
+                    }
                 }
             }
+            
         }
 
 
@@ -533,13 +575,20 @@ function fortifyFrom(owned) {
     for (let i = 0; i < owned.length; i++) {
         let cpf = {};
 
-        if (owned[i] -1 > - 1) {
-            if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] - 1].troops && 
-                mapTerritories[owned[i] - 1].owner == currentPlayer && owned[i] - 1 > -1) {
-                cpf = {mf: owned[i], mt: owned[i] - 1, mv: 1};
-    
-                cfv.push(cpf);
+        if (owned[i] - 1 > -1) {
+            // map wrap check
+            if (owned[i] - 1 == 5 || owned[i] - 1 == 10 || owned[i] - 1 == 15 || owned[i] - 1 == 20) {
+                // do nothing
             }
+            else {
+                if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] - 1].troops && 
+                    mapTerritories[owned[i] - 1].owner == currentPlayer && owned[i] - 1 > -1) {
+                    cpf = {mf: owned[i], mt: owned[i] - 1, mv: 1};
+        
+                    cfv.push(cpf);
+                }
+            }
+            
         }  
 
 
@@ -554,12 +603,18 @@ function fortifyFrom(owned) {
 
 
         if (owned[i] + 1 < 25) {
-            if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] + 1].troops && 
-                mapTerritories[owned[i] + 1].owner == currentPlayer && owned[i] + 1 < 25) {
-                cpf = {mf: owned[i], mt: owned[i] + 1, mv: 1};
-    
-                cfv.push(cpf);
+            // map wrap check
+            if (owned[i] + 1 == 6 || owned[i] + 1 == 11 || owned[i] + 1 == 16 || owned[i] + 1 == 21) {
+                // do nothing
             }
+            else {
+                if (mapTerritories[owned[i]].troops > mapTerritories[owned[i] + 1].troops && 
+                    mapTerritories[owned[i] + 1].owner == currentPlayer && owned[i] + 1 < 25) {
+                    cpf = {mf: owned[i], mt: owned[i] + 1, mv: 1};
+        
+                    cfv.push(cpf);
+                }
+            } 
         }
         
 
