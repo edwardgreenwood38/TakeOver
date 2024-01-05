@@ -469,14 +469,14 @@ function computerPlayer() {
         let totalTroops = 0;
         let numberOfFortify = 0;
 
-        console.log('============================')
-        console.log('fortify list ' + ownedTerrritories);
+        // console.log('============================')
+        // console.log('fortify list ' + ownedTerrritories);
         for (let i = 0; i < ownedTerrritories.length; i++) {
             totalTroops += mapTerritories[ownedTerrritories[i]].troops;
         }
 
         numberOfFortify = Math.floor(totalTroops / 5);
-        console.log(`Total troops: ${totalTroops}  Number fo fortify: ${numberOfFortify}`);
+        //console.log(`Total troops: ${totalTroops}  Number fo fortify: ${numberOfFortify}`);
 
         // perform number of fortify moves based numberOfFortify
         for (let i = 0; i < numberOfFortify; i++) {
