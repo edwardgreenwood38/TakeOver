@@ -31,7 +31,7 @@ function territoryAction(element) {
     // data is attack from
     let data = mapTerritories[terrNum.substring(9) - 1];
     //console.log(data);
-
+    //console.log(mapTerritories);
 
     // sets territory you are attacking to 
     // if player has selected his own first
@@ -446,7 +446,7 @@ function computerPlayer() {
     updateDisplay();
 
 
-    // fortify troops
+    //########   fortify troops
     let fortifyList = [];
     ownedTerrritories = [];
     // get owned territories
@@ -475,37 +475,56 @@ function computerPlayer() {
             totalTroops += mapTerritories[ownedTerrritories[i]].troops;
         }
 
-        numberOfFortify = Math.floor(totalTroops / 5);
+        numberOfFortify = Math.floor(totalTroops / 4);
         //console.log(`Total troops: ${totalTroops}  Number fo fortify: ${numberOfFortify}`);
+        let cfn = document.getElementById("turnResults");
+        cfn.innerHTML += `<div>Total number of fortify moves: ${numberOfFortify}</div>`;
+        cfn.scrollTop = cfn.scrollHeight;
 
         // perform number of fortify moves based numberOfFortify
         for (let i = 0; i < numberOfFortify; i++) {
+
+            // recalulate possible territories
+            fortifyList = fortifyFrom(ownedTerrritories);
+
+            let ff = -1;
+            let ft = -1;
             let r = Math.floor(Math.random() * parseInt(fortifyList.length));
 
-            let ff = fortifyList[r].mf;
-            mapTerritories[ff].troops -= 1;
-            let ft = fortifyList[r].mt;
-            mapTerritories[ft].troops += 1;
-    
-    
-            let ca = document.getElementById("turnResults");
-            ca.innerHTML += `<div>Moving troop from ${mapTerritories[ff].name} to ${mapTerritories[ft].name}</div>`;
-            //ca.innerHTML += `<div>${attackResults()}</div>`; 
-            ca.scrollTop = ca.scrollHeight;
-    
-            march(1500);
-    
-            // clear display
-            territories.forEach(t => {
-                t.style.border = "2px solid black";
-            });
-    
-            attackFrom = 0;
-            attackTo = 0;
-        }
+            ff = fortifyList[r].mf;
+            if (ff > -1 && mapTerritories[ff].troops > 1) {
+                mapTerritories[ff].troops -= 1;
+
+                ft = fortifyList[r].mt;
+                if (ft > -1) {
+                    mapTerritories[ft].troops += 1;
+                }
+
+                
+                let ca = document.getElementById("turnResults");
+                ca.innerHTML += `<div>Moving troop from ${mapTerritories[ff].name} to ${mapTerritories[ft].name}</div>`;
+                ca.scrollTop = ca.scrollHeight;
         
+                march(1500);
+                
+                
+                //for (let delay = 0; delay < 400000000; delay++) {}
+            } 
+            
+        }
+
+        // clear display
+        territories.forEach(t => {
+            t.style.border = "2px solid black";
+        });
+        
+        attackFrom = 0;
+        attackTo = 0;
+
         totalTroops = 0;
         numberOfFortify = 0;
+
+        updateDisplay();
     }
 
 
@@ -603,7 +622,7 @@ function fortifyFrom(owned) {
             }
             else {
                 if (mapTerritories[owned[i]].troops >= mapTerritories[owned[i] - 1].troops && 
-                    mapTerritories[owned[i] - 1].owner == currentPlayer && owned[i] - 1 > -1) {
+                    mapTerritories[owned[i] - 1].owner == currentPlayer && mapTerritories[owned[i]].troops > 1) {
                     cpf = {mf: owned[i], mt: owned[i] - 1, mv: 1};
         
                     cfv.push(cpf);
@@ -615,7 +634,7 @@ function fortifyFrom(owned) {
 
         if (owned[i] - 5 > -1) {
             if (mapTerritories[owned[i]].troops >= mapTerritories[owned[i] - 5].troops && 
-                mapTerritories[owned[i] - 5].owner == currentPlayer && owned[1] - 5 > -1) {
+                mapTerritories[owned[i] - 5].owner == currentPlayer && mapTerritories[owned[i]].troops > 1) {
                 cpf = {mf: owned[i], mt: owned[i] - 5, mv: 1};
     
                 cfv.push(cpf);
@@ -630,7 +649,7 @@ function fortifyFrom(owned) {
             }
             else {
                 if (mapTerritories[owned[i]].troops >= mapTerritories[owned[i] + 1].troops && 
-                    mapTerritories[owned[i] + 1].owner == currentPlayer && owned[i] + 1 < 25) {
+                    mapTerritories[owned[i] + 1].owner == currentPlayer && mapTerritories[owned[i]].troops > 1) {
                     cpf = {mf: owned[i], mt: owned[i] + 1, mv: 1};
         
                     cfv.push(cpf);
@@ -641,7 +660,7 @@ function fortifyFrom(owned) {
 
         if (owned[i] + 5 < 25) {
             if (mapTerritories[owned[i]].troops >= mapTerritories[owned[i] + 5].troops && 
-                mapTerritories[owned[i] + 5].owner == currentPlayer) {
+                mapTerritories[owned[i] + 5].owner == currentPlayer && mapTerritories[owned[i]].troops > 1) {
                 cpf = {mf: owned[i], mt: owned[i] + 5, mv: 1};
     
                 cfv.push(cpf);

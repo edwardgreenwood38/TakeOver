@@ -37,7 +37,7 @@ body {
 #turnAction {
     height: 500px;
     border: 3px double black;
-    width: 300px;
+    width: 350px;
     /* outline: 1px solid red; */
 }
 
@@ -46,7 +46,7 @@ body {
     height: 340px;
     background-color: white;
     border: 3px double black;
-    width: 295px;
+    width: 99%;
 }
 
 /* #hr {
